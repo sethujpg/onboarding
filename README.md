@@ -6,6 +6,8 @@ A chat agent that helps new interns and hires get through their first days at Ne
 ![model](https://img.shields.io/badge/model-claude--sonnet--4--6-purple)
 ![gateway](https://img.shields.io/badge/gateway-Portkey-orange)
 
+![NeoCognition onboarding assistant UI](onboarding_webui.png)
+
 ## Features
 
 - 💬 Streaming chat answers grounded in three onboarding docs

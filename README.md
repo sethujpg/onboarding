@@ -142,9 +142,36 @@ The server auto-detects: if `PORTKEY_API_KEY` is set, it routes through Portkey.
 
 ## Customize the knowledge base
 
-Edit the three `.md` files, then **restart the server** — the system prompt is built once at startup. No code changes needed.
+The agent's knowledge comes from `.md` files in the project root. **You don't need to touch code to add, edit, or remove knowledge.**
 
-When you change any file, the prompt cache invalidates. The next request writes fresh; subsequent ones read.
+### Add a new topic
+
+Drop a new `.md` file into the project root. That's it. The server **auto-detects** any `*.md` file in the root (except `README.md`) and includes it on the next request — no restart needed.
+
+```sh
+echo "# Pets policy\n\nDogs are welcome on Fridays..." > pets.md
+# Next /chat request automatically picks it up
+```
+
+### Edit an existing topic
+
+Just edit the file. The server watches file mtimes and **rebuilds the system prompt automatically** on the next chat request. The Anthropic prompt cache invalidates and writes a fresh entry, so the change takes effect immediately.
+
+### Remove a topic
+
+Delete the file (or move it out of the project root). Auto-detected on the next request.
+
+### Files that are NOT part of the KB
+
+These are excluded by name: `README.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `LICENSE.md`. If you want a markdown file to NOT be served as knowledge, name it one of those (or edit `KB_EXCLUDE` in `server.py`).
+
+### Verify it worked
+
+```sh
+curl http://localhost:8000/health
+```
+
+Returns the list of `.md` files currently loaded. If your new file shows up there, you're good.
 
 ## Customize the checklist
 

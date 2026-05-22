@@ -70,6 +70,25 @@ Bring **originals** (not copies) of your ID documents for in-person I-9 verifica
 
 **How you'll know I-9 is complete:** You'll get a confirmation email along the lines of *"Your physical document inspection process has been successfully completed by [name]."* If you haven't received it, follow up with HR.
 
+### ⚠️ SSN is mandatory — TIN / ITIN will not work
+
+You must have a valid **Social Security Number (SSN)** to be paid and complete I-9 at NeoCognition. A **TIN / ITIN is NOT accepted** as a substitute.
+
+**If you don't have one yet** (common for international hires on H-1B / OPT / etc.):
+- Apply for your SSN immediately at the nearest Social Security Administration office — you cannot apply online for a first-time SSN.
+- Bring your passport, visa, I-94, and any work authorization documents.
+- It typically takes 2–4 weeks. Notify HR (`@HR` / Rippling messages) the day you apply so they can flag your account as "SSN pending" and avoid payroll disruptions.
+- You can start work without the card in hand, but you must provide the number to payroll as soon as you receive it.
+
+### 🔍 Background check (Checkr) — finish by Day 3
+
+NeoCognition runs background checks through **Checkr**.
+
+- An invitation email is sent to the **email you registered in Rippling** (usually personal) — check spam.
+- You'll need to consent and fill in a short form (employment history, addresses, SSN). Takes about 10 minutes.
+- **Must be completed before end of Day 3** — payroll and certain system accesses are gated on this.
+- If you haven't seen the Checkr email by Day 2, ping HR. Don't sit on it.
+
 ## Day 1 — Morning: IT & Identity
 
 Official checklist for the first half of Day 1.
@@ -189,7 +208,28 @@ If any of this fails, ping **@Yao Yang** or **@Xiang Deng**.
 
 ## Compute: Modal vs GCP
 
-NeoCognition has two compute environments — **Modal** and **GCP** — but **Modal is the easier path to compute** in practice. Default to Modal for ad-hoc GPU work and only reach for GCP when you specifically need it.
+NeoCognition has two compute environments. **They're for different things — pick based on your use case, not by default.**
+
+| Use case | Pick |
+|---|---|
+| "I just want to test something quickly" / one-off script / batch inference / parallel sweep | **Modal** |
+| "I need to scale a stateless job out" (10 GPUs in parallel, big batch run) | **Modal** |
+| "I want a real dev box to SSH into, install stuff, keep state across days" | **GCP** |
+| "I'm setting up a long-running experiment / training run that I want to babysit" | **GCP** |
+| "I want a persistent Jupyter / VS Code Remote workspace that doesn't disappear" | **GCP** |
+
+### In plain words
+
+- **Modal** = **stateless and fast**. Each container is fresh — your file system disappears when the job ends (unless you mount a Volume). Best when you want to run something, get the output, and move on. Or when you want to fan out to many GPUs without managing infra.
+- **GCP** = **persistent and yours**. You create a VM, install packages, save files to disk, leave it running — it's like a remote computer you own (and pay for) for as long as it's up. Best when you're iterating on something for days/weeks.
+
+### Rule of thumb
+
+- **Quick test or scale-out job?** Modal. You'll be productive in 5 minutes.
+- **Day-to-day development?** GCP. Set it up once, then SSH in like you would your own machine.
+- **Not sure?** Default to Modal for anything that runs and ends. Switch to GCP the moment you find yourself wanting your state to survive across sessions.
+
+(And **always stop your GCP VM when you're not using it** — persistent disks keep costing money even when the VM is stopped, but the compute and GPU charges stop. The biggest GCP bill surprises come from VMs left running over a weekend.)
 
 **Before you can use Modal:**
 - ✅ **Confirm with your mentor that you've been added to the Modal workspace** (e.g. `neocognition-dev`). If you haven't, `modal setup` will fail.
@@ -303,6 +343,20 @@ Incoming mail/packages live in the mailroom. Outgoing letters go in the outgoing
 ## Benefits & Stipends
 
 NeoCognition gives you monthly stipends plus in-office meals. All stipend spending is reimbursed/managed through **Ramp** (see the Ramp section below for the submission rules).
+
+### 🏥 Health insurance — full-time employees, read this carefully
+
+If you're a **full-time hire** (not an intern/contractor):
+
+- You'll enroll in **health, dental, and vision** insurance during Rippling onboarding — there's typically a **30-day window** from your start date.
+- **Read the policy details before you click "Submit."** Specifically check:
+  - Which carrier (you may have multiple plan options — PPO vs HMO, HSA-eligible vs not)
+  - Deductible, out-of-pocket maximum, and monthly premium
+  - Whether your current doctors are in-network
+  - Whether dependents are covered and at what cost
+  - Effective date — usually 1st of the month after your start date, but verify
+- If you have questions on the policy itself (not the enrollment workflow), the carrier's member services line is usually the fastest answer — number is in the policy PDF Rippling sends.
+- Interns/contractors: this section doesn't apply — your benefits are spelled out in your offer letter.
 
 ### 💰 Personal Lifestyle Stipend — $500/month
 

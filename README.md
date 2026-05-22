@@ -187,17 +187,26 @@ The app is one FastAPI process plus three static markdown files. Any of these wo
 
 If you deploy publicly, **add Google SSO restricted to `@neocognition.io`** first — otherwise you're hosting an open LLM endpoint that anyone on the internet can drain.
 
-## Future ideas
+## TODO
 
-- Citations — make the agent emit which file/section the answer came from, render as footnotes with a side panel
+Things that should happen before this is rolled out broadly:
+
+- [ ] **Slack integration.** This currently lives in a browser tab nobody remembers to open. Wire it into a NeoCognition Slack bot so new hires can ask questions inline in `#help` (or a dedicated `#onboarding-bot` channel). Same FastAPI backend — just swap the UI for a Slack event handler.
+- [ ] **Full-time-employee content.** The knowledge base currently leans toward intern needs. Missing or thin: health-insurance plan comparison and deductible/network details, equity vesting schedule, 401(k) match and waiting period, full PTO policy, parental leave, performance review cadence, promotion process. Someone with FTE access should fill these in.
+- [ ] **Production hosting + security review.** Right now this runs on a local dev box and the GitHub repo is public. Before broader use:
+  - Host it on a real service (Render/Railway/Fly.io or a NeoCognition-internal host)
+  - Put it behind **Google Workspace SSO restricted to `@neocognition.io`** so it's not an open LLM endpoint anyone on the internet can drain
+  - Run a security review: prompt injection in `/chat`, abuse of `/feedback` (rate limit, validate input length), what happens if someone uploads a malicious `.md` to the knowledge folder, secret handling
+  - Decide on PII policy for `feedback.jsonl` (it captures the question + answer text — could include personal info)
+  - Confirm whether the GitHub repo should stay public; the docs name specific employees and contain operational details an attacker could use for social engineering
+
+## Future ideas (nice-to-have)
+
+- Citations — render which file/section the answer came from as footnotes
 - Suggested follow-ups after each answer
 - Stop / regenerate button mid-stream
-- Slack bot version (same backend, different frontend)
 - Auto-summarize `feedback.jsonl` weekly and post to a Slack channel
-
-## Author
-
-Built by a NeoCognition intern as their onboarding project — for future interns.
+- Per-role views (intern vs. full-time) that filter the checklist and tailor responses
 
 ## License
 

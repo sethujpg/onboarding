@@ -107,7 +107,7 @@ Official checklist for the first half of Day 1.
 
 1. Open the Gmail app (or gmail.com) and sign in with your new NeoCognition email + the temp password from Rippling
 2. You'll be prompted to change the password on first login
-3. **2-step verification is mandatory at NeoCognition.** On first sign-in, use one of the temporary single-use codes provided, then immediately set up your own 2-step verification method (Authenticator app recommended)
+3. **Enable MFA on your Google Workspace account — this is mandatory at NeoCognition.** On first sign-in, use one of the temporary single-use codes provided, then **immediately** go to https://myaccount.google.com/security and set up your own multi-factor authentication. Authenticator app (Google Authenticator, 1Password, or Authy) is recommended over SMS — SMS is vulnerable to SIM-swap attacks. Once configured, MFA applies across Gmail, Drive, Calendar, and every other Google Workspace tool you'll use day-to-day.
 
 ## Day 1 — Afternoon: Access Confirmed
 
@@ -416,14 +416,67 @@ Need extra equipment (monitor, keyboard, mouse, stand, etc.)?
 - Tag **@Surbhi Agarwal**
 - All requests are subject to review and approval
 
+## Who to ask — quick routing
+
+Use this as a quick reference for who to ping (always in **public channels first** per the Slack norms below, not DMs):
+
+| Question type | Who | Where |
+|---|---|---|
+| **Technical / engineering questions** (ML, code, infra, setup) | **@Yao Yang** | `#eng` or relevant tech channel |
+| Login / account issues for any company tool | @Yao Yang or @Xiang Deng | `#help` |
+| Benefits, WeBox / meals, reimbursements, desk equipment, weekend meal vouchers | @Surbhi Agarwal | `#help` |
+| Slack channel invites, Notion page links, Modal/GitHub access, team-specific questions | Your mentor | DM or `#help` |
+| I-9, Rippling, payroll, tax forms, bank info, benefits enrollment | HR | Rippling messages |
+| Office building (gym code, door codes, mail, parking, food schedule) | Industrious main desk (in person), or pagemill@industriousoffice.com | — |
+
+If you're not sure who to ping, default to **your mentor** first and they'll route you.
+
 ## Slack
 
-Slack is the main communication tool at NeoCognition.
+Slack is **the** main collaboration environment at NeoCognition — not just a chat tool. Decisions are made there, context is shared there, and the history of our work lives there. The way you use Slack matters more than most other tools.
 
-**Things to check / do once you join:**
+### When you join
+
 - Confirm you've been invited to the NeoCognition Slack workspace
-- Ask your mentor to make sure you're added to **all the channels relevant to your role** — you won't know what you're missing if no one tells you
-- Get familiar with the **help channels** and other purpose-specific channels — learn what each one is for (e.g. where to ask IT questions vs. HR vs. engineering, etc.) so you ping the right place
+- Ask your mentor to add you to all the channels relevant to your role — you won't know what you're missing if no one tells you
+- Learn what each channel is for (where IT questions go vs. HR vs. engineering, etc.) so you ping in the right place
+
+### Slack best practices at NeoCognition
+
+We deliberately run a **Slack-first, public-by-default culture**. Read these before you start posting — the norms are intentional.
+
+**1. Public by default**
+- Use **public channels**, not DMs, for almost everything. DMs are invisible, unsearchable to others, and force re-explanations later.
+- Exceptions: HR, compensation, and genuinely sensitive interpersonal matters.
+- Use topical channels (e.g. `#eng`, `#research`, `#papers`). When unsure → post publicly.
+- It's encouraged to create new channels and retire unused ones.
+
+**2. Organize replies in threads**
+- **Reply in a thread**, not the main channel, unless you're starting a new top-level topic.
+- Announcement channels are thread-only for replies — respect that.
+- If a thread needs to move elsewhere, link the parent message in the new channel.
+
+**3. High engagement**
+- Default: scan all messages in company channels **within ~1 hour during working hours**.
+- If something is related to you → **respond or engage promptly** (answer, give input, or at least acknowledge).
+- If it's useful but not actionable → at least react with an emoji.
+- Use emoji reactions generously to signal state: 👍 = seen/agree, 👀 = looking into it, ✅ = done. Custom fun emojis are welcome as long as meaning is clear.
+- Boundaries are healthy. Use **Do-Not-Disturb** schedules and notification controls — but uphold prompt engagement during working hours.
+
+**4. Mention etiquette (balance reach vs. noise)**
+- `@person` → the accountable owner. Avoid carpet mentions.
+- `@here` → **urgent and time-sensitive** for currently-active members. Use sparingly.
+- `@channel` / `@everyone` → **rare**, only for company-wide relevance. Admins may throttle these.
+
+### Why this matters (in one line)
+
+When Slack is used openly, it becomes our collective memory and coordination system. When used in silos (DMs, small groups), it fragments knowledge, forces repetition, and prevents alignment.
+
+### Background reading (optional but recommended)
+
+- [Basecamp — "Work in Public"](https://basecamp.com/guides/how-we-communicate#work-in-public)
+- [GitLab Handbook — Communication](https://handbook.gitlab.com/handbook/communication/#communicating-effectively)
+- [Stripe Writing Culture](https://slab.com/blog/stripe-writing-culture/)
 
 ## Notion
 
